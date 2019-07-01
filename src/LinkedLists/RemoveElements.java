@@ -12,13 +12,13 @@ public class RemoveElements {
 
     public static void main(String args[]) {
         ListNode head = new ListNode(1);
-        ListNode second = new ListNode(2);
+        ListNode second = new ListNode(1);
         ListNode third = new ListNode(3);
 
         head.next = second;
         second.next = third;
 
-        ListNode newHead = removeElementsRecursive(head, 2);
+        ListNode newHead = removeElements(head, 1);
 
         while (newHead != null) {
             System.out.println(newHead.val);
@@ -26,14 +26,15 @@ public class RemoveElements {
         }
     }
     public static ListNode removeElements(ListNode head, int val) {
+
+
+
+        while (head != null && head.val == val) {
+            head = head.next;
+        }
         ListNode current = head;
 
-        if (current.val == val) {
-            head = head.next;
-            return head;
-        }
-
-        while (current.next != null) {
+        while (current != null && current.next != null) {
             if (current.next.val == val) {
                 current.next = current.next.next;
             } else {
