@@ -13,7 +13,7 @@ package LinkedLists;
     Input: 1->1->2->3->3
     Output: 1->2->3
  */
-public class RemoveDuplicates {
+public class RemoveDuplicatesSorted {
 
     public static void main(String args[]) {
         ListNode head = new ListNode(1);
