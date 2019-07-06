@@ -73,11 +73,15 @@ public class InvertBinaryTree {
      */
     public TreeNode invertTreeIterative(TreeNode root) {
 
-        Queue<TreeNode> queue = new LinkedList<>();
+        if (root == null) {
+            return null;
+        }
+        Queue<TreeNode> queue = new LinkedList<TreeNode>();
         queue.add(root);
 
         while (!queue.isEmpty()) {
             TreeNode current = queue.poll();
+
             TreeNode temp = current.right;
             current.right = current.left;
             current.left = temp;
