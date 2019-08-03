@@ -3,7 +3,7 @@ package Strings;
 public class LongestPalindromeSubstr {
 
     public static void main(String args[]) {
-        String str = "bananas";
+        String str = "banana";
         System.out.println(longestPalindromeSubstr(str));
         System.out.println(longestPalindrome(str));
     }
@@ -42,37 +42,28 @@ public class LongestPalindromeSubstr {
         return true;
     }
 
-
     /*
         Approach: Dynamic Programming
-        Time Complexity : O(n2)
+         Time Complexity : O(n2)
+
      */
-    public static String longestPalindrome(String str) {
-        int length = str.length();
+    public static String longestPalindrome(String s) {
+        int n = s.length();
+        String res = null;
 
-        if (str == null || length < 2) {
-            return str;
-        }
+        boolean[][] dp = new boolean[n][n];
 
-        boolean[][] isPalindrome = new boolean[length][length];
+        for (int i = n - 1; i >= 0; i--) {
+            for (int j = i; j < n; j++) {
+                dp[i][j] = s.charAt(i) == s.charAt(j) && (j - i < 3 || dp[i + 1][j - 1]);
 
-        int left = 0;
-        int right = 0;
-
-        for (int j = 1; j < length; j++) {
-            for (int i = 0; i < j; i++) {
-                boolean isInnerPalindrome = isPalindrome[i+1][j-1] || (j - i) <= 2;
-                if (str.charAt(i) == str.charAt(j) && isInnerPalindrome) {
-                    isPalindrome[i][j] = true;
-
-                    if ( j - i > right - left) {
-                        left = i;
-                        right = j;
-                    }
+                if (dp[i][j] && (res == null || j - i + 1 > res.length())) {
+                    res = s.substring(i, j + 1);
                 }
             }
         }
-        return str.substring(left, right + 1);
+
+        return res;
     }
 
 
