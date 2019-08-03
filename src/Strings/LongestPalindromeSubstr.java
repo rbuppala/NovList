@@ -16,16 +16,16 @@ public class LongestPalindromeSubstr {
      */
     public static String longestPalindromeSubstr(String str) {
 
-        int length = str.length();
+        int n = str.length();
         int maxLen = 0;
         String maxSubstr = "";
-        for (int i = 0; i < length; i++) {
-            for (int j = i; j < length; j++) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j <= n; j++) {
 
-                if (isPalindrome(str.substring(i, j+1))) {
-                    if ( (j+1) - i > maxLen) {
-                        maxLen = (j+1) - i;
-                        maxSubstr = str.substring(i, j+1);
+                if (isPalindrome(str.substring(i, j))) {
+                    if ( j - i > maxLen) {
+                        maxLen = j - i;
+                        maxSubstr = str.substring(i, j);
                     }
                 }
             }

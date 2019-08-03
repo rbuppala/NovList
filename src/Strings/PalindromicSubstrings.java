@@ -26,12 +26,12 @@ public class PalindromicSubstrings {
         System.out.println(countSubstringsDP(str));
     }
     public static int countSubstrings(String s) {
-        int length = s.length();
+        int n = s.length();
         int noOfPalindromes = 0;
 
-        for (int i = 0; i < length; i++) {
-            for (int j = i; j < length; j++) {
-                if (isPalindrome(s.substring(i, j+1))) {
+        for (int i = 0; i < n; i++) {
+            for (int j = i+1; j <= n; j++) {
+                if (isPalindrome(s.substring(i, j))) {
                     noOfPalindromes++;
                 }
             }
